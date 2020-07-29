@@ -7,8 +7,6 @@ name: CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,22 +18,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
     - name: Deploy docker-compose
-      uses: hasnat/deploy-docker-compose@v0.1-alpha
-       #with:
-        # repo access token
-         #token: 
-        # Repo to deploy
-         #repository: 
-        # Repo branch
-         #branch: # optional
-        # Server to deploy to
-         #deployto: # optional
-        # Use dockerfile when you would like to explicitly build a Dockerfile
-         #composefolder: # optional
-        # Use workdir when you would like to change the directory for building
-         #projectname: # optional
-        # Use buildargs when you want to pass a list of environment variables as build-args
-         #buildargs: # optional
+    - name: Build the docker-compose stack
+      run: docker-compose build
+    - name: Run docker-compose stack
+      run: docker-compose up -d
+    - name: Check running containers
+      run: docker ps -a
