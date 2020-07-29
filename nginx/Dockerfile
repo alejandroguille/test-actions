@@ -1,13 +1,9 @@
 FROM nginx:1.19.1-alpine
 
 # Add config files
-ADD nginx.conf /etc/nginx/
-ADD laravel.conf /etc/nginx/sites-available/
+ADD nginx.conf    /etc/nginx/
+ADD laravel.conf  /etc/nginx/conf.d/
 ADD upstream.conf /etc/nginx/conf.d/
-
-RUN ln -s /etc/nginx/sites-available/laravel.conf /etc/nginx/sites-enabled/laravel
-RUN rm /etc/nginx/sites-enabled/default
-RUN rm /etc/nginx/sites-available/default
 
 RUN usermod -u 1000 www-data
 
