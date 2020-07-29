@@ -1,0 +1,36 @@
+version: '2'
+services:
+   php:
+        container_name: wyleex_php
+        build: ./php7.3-fpm
+        ports:
+            - 9000
+        volumes:
+            - ./laravel:/var/www/laravel
+            - ./php7.3-fpm/php-timezone.ini:/usr/local/etc/php/conf.d/docker-php-timezone.ini
+        restart: always
+
+   nginx:
+        container_name: wyleex_nginx
+        build: ./nginx
+        ports:
+            - 99:80
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./logs/nginx/:/var/log/nginx          
+        restart: always
+
+#    dblaravel:
+#        container_name: dblaravel_wyleex
+#        image: mysql:5.7
+#        command: mysqld --user=root --bind-address=0.0.0.0
+#        volumes:
+#            - "./datamysql/db:/var/lib/mysql"
+#        environment:
+#            MYSQL_ROOT_PASSWORD: 'laravel'
+#            MYSQL_DATABASE: laravel
+#            MYSQL_USER: laravel
+#            MYSQL_PASSWORD: laravel
