@@ -5,8 +5,6 @@ ADD nginx.conf    /etc/nginx/
 ADD laravel.conf  /etc/nginx/conf.d/
 ADD upstream.conf /etc/nginx/conf.d/
 
-RUN usermod -u 1000 www-data
-
 CMD ["nginx"]
 
 EXPOSE 80
