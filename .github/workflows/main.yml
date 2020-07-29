@@ -22,25 +22,20 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
-
-    # Runs a set of commands using the runners shell
     - name: Deploy docker-compose
       uses: hasnat/deploy-docker-compose@v0.1-alpha
-      with:
+       #with:
         # repo access token
-        token: 
+         #token: 
         # Repo to deploy
-        repository: 
+         #repository: 
         # Repo branch
-        branch: master
+         #branch: # optional
         # Server to deploy to
-        deployto: # optional
+         #deployto: # optional
         # Use dockerfile when you would like to explicitly build a Dockerfile
-        composefolder: # optional
+         #composefolder: # optional
         # Use workdir when you would like to change the directory for building
-        projectname: # optional
+         #projectname: # optional
         # Use buildargs when you want to pass a list of environment variables as build-args
-        buildargs: # optional
+         #buildargs: # optional
