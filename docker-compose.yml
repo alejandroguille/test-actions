@@ -14,7 +14,7 @@ services:
         container_name: wyleex_nginx
         build: ./nginx
         ports:
-            - 99:80
+            - 93:80
         links:
             - php
         volumes_from:
