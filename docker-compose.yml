@@ -17,7 +17,7 @@ services:
             - 93:80
         links:
             - php
-       depends_on:
+        depends_on:
             - php            
         volumes:
             - ./laravel:/var/www/laravel
