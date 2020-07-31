@@ -17,9 +17,10 @@ services:
             - 93:80
         links:
             - php
-        volumes_from:
-            - php
+       depends_on:
+            - php            
         volumes:
+            - ./laravel:/var/www/laravel
             - ./logs/nginx/:/var/log/nginx          
         restart: always
 
