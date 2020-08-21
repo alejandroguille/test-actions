@@ -24,7 +24,7 @@ jobs:
       with:
         host: 104.155.137.39
         username: pedro
-        key: ${{ secrets.PUBLIC_DEPLOY }}
+        key: ${{ secrets.PUBLIC_DEVELOP }}
         port: 22
         script: |
           whoami
