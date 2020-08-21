@@ -22,7 +22,7 @@ jobs:
 
     - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-private-key: ${{ secrets.PUBLIC_DEVELOP }}
         ssh-host: pedro@104.155.137.39
 
     - name: Run a multi-line script
