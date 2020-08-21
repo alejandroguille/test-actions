@@ -27,5 +27,5 @@ jobs:
         key: ${{ secrets.PUBLIC_DEVELOP }}
         port: 22
         script: |
-          whoami
+          cd /var/www
           ls -al
