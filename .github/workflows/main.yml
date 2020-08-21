@@ -22,10 +22,10 @@ jobs:
     - name: ssh deploy
       uses: appleboy/ssh-action@master
       with:
-        host: 104.155.137.39
+       # host: 104.155.137.39
         username: pedro
-        key: ${{ secrets.DEPLOY_SECRET }}
+        #key: ${{ secrets.DEPLOY_SECRET }}
         port: 22
         script: |
-          cd /home/agustinpereyra_e/sooft/LaVoz-WyleexAnalytics-Web
+         # cd /home/agustinpereyra_e/sooft/LaVoz-WyleexAnalytics-Web
           ls -al
