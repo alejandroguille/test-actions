@@ -6,7 +6,7 @@ name: CI-Lavoz-Web
 # events but only for the master branch
 on:
   push:
-    branches: [ develop ]
+    branches: [ ci ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,15 +17,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - name: ssh deploy
-      uses: appleboy/ssh-action@master
-      with:
-       # host: 104.155.137.39
-        username: pedro
-        #key: ${{ secrets.DEPLOY_SECRET }}
-        port: 22
-        script: |
-         # cd /home/agustinpereyra_e/sooft/LaVoz-WyleexAnalytics-Web
-          ls -al
+      - name: Clone and checkout actual branch
+        uses: actions/checkout@v2
+      - name: ssh deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: 104.155.137.39
+          username: pedro
+          key: ${{ secrets.DEPLOY_SECRET }}
+          port: 22
+          script: |
+            cd /home/agustinpereyra_e/sooft/LaVoz-WyleexAnalytics-Web
+            docker-compose build
+            docker-compose up -d
+            docker-compose exec -T php bash -c "npm update"
+            docker-compose exec -T php bash -c "npm run prod"
+            #docker-compose exec -T php bash -c "composer update"   
