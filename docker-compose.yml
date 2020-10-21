@@ -18,7 +18,7 @@ services:
           context: ./nginx
           dockerfile: Dockerfile
         ports:
-            - 93:80
+            - 6000:80
         links:
             - php
         depends_on:
