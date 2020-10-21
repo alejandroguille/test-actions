@@ -25,7 +25,7 @@ jobs:
             SOURCE: "/"
             REMOTE_HOST: 35.239.48.152
             REMOTE_USER: pedro
-            TARGET: /var/www/ale
+            TARGET: /home/pedro/ale
         #with:
         #  host: 35.239.48.152
         #  username: pedro
