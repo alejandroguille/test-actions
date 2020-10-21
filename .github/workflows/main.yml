@@ -37,7 +37,7 @@ jobs:
             docker-compose down
             docker-compose build
             docker-compose up -d
-            docker-compose exec php bash -c "npm update"
-            docker-compose exec php bash -c "npm run prod"
-            docker-compose exec php bash -c "php artisan cache:clear"
+            docker-compose exec php bash -c "npm update" |
+            docker-compose exec php bash -c "npm run prod" |
+            docker-compose exec php bash -c "php artisan cache:clear" |
             ls -l
