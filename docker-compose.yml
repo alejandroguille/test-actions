@@ -2,7 +2,9 @@ version: '3.7'
 services:
    php:
         container_name: wyleex_php
-        build: ./php7.3-fpm/Dockerfile
+        build:
+          context: ./php7.3-fpm
+          dockerfile: Dockerfile
         ports:
             - 9000
         volumes:
@@ -12,7 +14,9 @@ services:
 
    nginx:
         container_name: wyleex_nginx
-        build: ./nginx/Dockerfile
+        build:
+          context: ./nginx
+          dockerfile: Dockerfile
         ports:
             - 93:80
         links:
