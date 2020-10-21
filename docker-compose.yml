@@ -1,7 +1,7 @@
 version: '3.7'
 services:
    php:
-        container_name: wyleex_php
+        container_name: test-delete-php
         build:
           context: ./php7.3-fpm
           dockerfile: Dockerfile
@@ -13,7 +13,7 @@ services:
         restart: always
 
    nginx:
-        container_name: wyleex_nginx
+        container_name: test-delete-nginx
         build:
           context: ./nginx
           dockerfile: Dockerfile
