@@ -20,13 +20,21 @@ jobs:
       - name: Clone and checkout actual branch
         uses: actions/checkout@v2  
       - name: ssh deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: 35.239.48.152
-          username: pedro
-          key: ${{ secrets.PUBLIC_DEVELOP }}
-          port: 22
-          script: |
-            cd /var/www/ale/
-            docker-compose build
-            ls -l
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.PUBLIC_DEVELOP }}
+            #ARGS: "-rltgoDzvO --delete"
+            SOURCE: "/"
+            REMOTE_HOST: 35.239.48.152
+            REMOTE_USER: pedro
+            TARGET: /var/www/ale
+        #with:
+        #  host: 35.239.48.152
+        #  username: pedro
+        #  key: ${{ secrets.PUBLIC_DEVELOP }}
+        #  port: 22
+        #  script: |
+        #    cd /var/www/ale/
+        #    docker-compose build
+        #    ls -l
