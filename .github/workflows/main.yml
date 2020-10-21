@@ -24,7 +24,7 @@ jobs:
         with:
           host: 35.239.48.152
           username: pedro
-          key: ${{ secrets.DEPLOY_SECRET }}
+          key: ${{ secrets.PUBLIC_DEVELOP }}
           port: 22
           script: |
             cd /var/www/ale/
