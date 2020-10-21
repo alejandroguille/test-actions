@@ -6,7 +6,7 @@ name: CI-Lavoz-Web
 # events but only for the master branch
 on:
   push:
-    branches: [ ci ]
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,7 +20,6 @@ jobs:
       - name: Clone and checkout actual branch
         uses: actions/checkout@v2
         with:
-          repository: my-org/my-private-tools
           path: /var/www/ale/      
       - name: ssh deploy
         uses: appleboy/ssh-action@master
