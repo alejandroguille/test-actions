@@ -19,17 +19,17 @@ jobs:
     steps:
       - name: Clone and checkout actual branch
         uses: actions/checkout@v2
+        with:
+          repository: my-org/my-private-tools
+          path: /var/www/ale/      
       - name: ssh deploy
         uses: appleboy/ssh-action@master
         with:
-          host: 104.155.137.39
+          host: 35.239.48.152
           username: pedro
           key: ${{ secrets.DEPLOY_SECRET }}
           port: 22
           script: |
-            cd /home/agustinpereyra_e/sooft/LaVoz-WyleexAnalytics-Web
+            cd /var/www/ale/
             docker-compose build
-            docker-compose up -d
-            docker-compose exec -T php bash -c "npm update"
-            docker-compose exec -T php bash -c "npm run prod"
-            #docker-compose exec -T php bash -c "composer update"   
+            ls -l
