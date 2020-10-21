@@ -18,9 +18,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Clone and checkout actual branch
-        uses: actions/checkout@v2
-        with:
-          path: /var/www/ale/      
+        uses: actions/checkout@v2  
       - name: ssh deploy
         uses: appleboy/ssh-action@master
         with:
